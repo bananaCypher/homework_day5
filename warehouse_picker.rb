@@ -1,214 +1,206 @@
-require 'pry-byebug'
-
 BAYS = [
   {
-    'bay' => 'bath fizzers',
+    'bay' => 'b7',
     'item' => 'bath fizzers',
-    'bay_letter' => 'b',
-    'bay_number' => 7
+    'value' => 27
   },
   {
     'bay' => 'a3',
     'item' => 'blouse',
-    'bay_letter' => 'a',
-    'bay_number' => 3
+    'value' => 8
   },
   {
     'bay' => 'a7',
     'item' => 'bookmark',
-    'bay_letter' => 'a',
-    'bay_number' => 7
+    'value' => 4
   },
   {
     'bay' => 'c8',
     'item' => 'candy wrapper',
-    'bay_letter' => 'c',
-    'bay_number' => 8
+    'value' => 18
   },
   {
     'bay' => 'c3',
     'item' => 'chalk',
-    'bay_letter' => 'c',
-    'bay_number' => 3
+    'value' => 13
   },
   {
     'bay' => 'b10',
     'item' => 'cookie jar',
-    'bay_letter' => 'b',
-    'bay_number' => 10
+    'value' => 30
   },
   {
     'bay' => 'b9',
     'item' => 'deodorant',
-    'bay_letter' => 'b',
-    'bay_number' => 9
+    'value' => 29
   },
   {
     'bay' => 'c2',
     'item' => 'drill press',
-    'bay_letter' => 'c',
-    'bay_number' => 2
+    'value' => 12
   },
   {
     'bay' => 'c6',
     'item' => 'face wash',
-    'bay_letter' => 'c',
-    'bay_number' => 6
+    'value' => 16
   },
   {
     'bay' => 'a9',
     'item' => 'glow stick',
-    'bay_letter' => 'a',
-    'bay_number' => 9
+    'value' => 2
   },
   {
     'bay' => 'a4',
     'item' => 'hanger',
-    'bay_letter' => 'a',
-    'bay_number' => 4
+    'value' => 7
   },
   {
     'bay' => 'c10',
     'item' => 'leg warmers',
-    'bay_letter' => 'c',
-    'bay_number' => 10
+    'value' => 20
   },
   {
     'bay' => 'a8',
     'item' => 'model car',
-    'bay_letter' => 'a',
-    'bay_number' => 8
+    'value' => 3
   },
   {
     'bay' => 'b5',
     'item' => 'nail filer',
-    'bay_letter' => 'b',
-    'bay_number' => 5
+    'value' => 25
   },
   {
     'bay' => 'a1',
     'item' => 'needle',
-    'bay_letter' => 'a',
-    'bay_number' => 1
+    'value' => 10
   },
   {
     'bay' => 'c7',
     'item' => 'paint brush',
-    'bay_letter' => 'c',
-    'bay_number' => 7
+    'value' => 17
   },
   {
     'bay' => 'b4',
     'item' => 'photo album',
-    'bay_letter' => 'b',
-    'bay_number' => 4
+    'value' => 24
   },
   {
     'bay' => 'b3',
     'item' => 'picture frame',
-    'bay_letter' => 'b',
-    'bay_number' => 3
+    'value' => 23
   },
   {
     'bay' => 'a10',
     'item' => 'rubber band',
-    'bay_letter' => 'a',
-    'bay_number' => 10
+    'value' => 1
   },
   {
     'bay' => 'a5',
     'item' => 'rubber duck',
-    'bay_letter' => 'a',
-    'bay_number' => 5
+    'value' => 6
   },
   {
     'bay' => 'c1',
     'item' => 'rusty nail',
-    'bay_letter' => 'c',
-    'bay_number' => 1
+    'value' => 11
   },
   {
     'bay' => 'b2',
     'item' => 'sharpie',
-    'bay_letter' => 'b',
-    'bay_number' => 2
+    'value' => 22
   },
   {
     'bay' => 'c9',
     'item' => 'shoe lace',
-    'bay_letter' => 'c',
-    'bay_number' => 9
+    'value' => 19
   },
   {
     'bay' => 'a6',
     'item' => 'shovel',
-    'bay_letter' => 'a',
-    'bay_number' => 6
+    'value' => 5
   },
   {
     'bay' => 'a2',
     'item' => 'stop sign',
-    'bay_letter' => 'a',
-    'bay_number' => 2
+    'value' => 9
   },
   {
     'bay' => 'c5',
     'item' => 'thermometer',
-    'bay_letter' => 'c',
-    'bay_number' => 5
+    'value' => 15
   },
   {
     'bay' => 'b1',
     'item' => 'tyre sing',
-    'bay_letter' => 'b',
-    'bay_number' => 1
+    'value' => 21
   },
   {
     'bay' => 'b8',
     'item' => 'tissue box',
-    'bay_letter' => 'b',
-    'bay_number' => 8
+    'value' => 28
   },
   {
     'bay' => 'b6',
     'item' => 'tooth paste',
-    'bay_letter' => 'b',
-    'bay_number' => 6
+    'value' => 26
   },
   {
     'bay' => 'c4',
     'item' => 'word search',
-    'bay_letter' => 'c',
-    'bay_number' => 4
+    'value' => 14
   },
 ]
 
-def get_item_from_bay(bay_key)
-  BAYS.detect{|bay| bay_key == bay['bay']}['item']
+# Helper functions
+def get_bay_from_bay_key(bay_key)
+  BAYS.detect{|bay| bay_key == bay['bay']}
 end
 
-def get_bay_by_item(item)
-  BAYS.each {|bay| return bay['bay'] if bay['item'] == item}
+def get_bay_from_item(item)
+  BAYS.detect{|bay| item == bay['item']}
 end
 
-def get_items_from_bay_list(bay_list)
-  item_list = []
-  bay_list.each {|bay| item_list.push(get_item_from_bay(bay))}
-  item_list
+def get_bays_from_bay_list(bay_list)
+  bays = []
+  bay_list.each {|bay| bays.push(get_bay_from_bay_key(bay))}
+  bays
 end
 
 def get_bays_from_item_list(item_list)
   bay_list = []
-  item_list.each {|item| bay_list.push(get_bay_by_item(item))}
+  item_list.each {|item| bay_list.push(get_bay_from_item(item))}
   bay_list
 end
 
-def get_bay_value(bay)
-  bay[1,test.length].to_i
+# Runner functions
+def get_item_by_bay(bay)
+  get_bay_from_bay_key(bay)['item']
+end
+
+def get_bay_by_item(item)
+  get_bay_from_item(item)['bay']
+end
+
+def get_items_from_bay_list(bay_list)
+  item_list = []
+  get_bays_from_bay_list(bay_list).each {|bay| item_list.push(bay['item'])}
+  item_list
+end
+
+def get_bay_numbers_from_item_list(item_list)
+  bay_list = []
+  get_bays_from_item_list(item_list).each {|bay| bay_list.push(bay['bay'])}
+  bay_list
 end
 
 def get_items_from_bay_list_with_distance(bay_list)
-  bays = get_items_from_bay_list(bay_list)
-  bay_values = bays.map {|bay| get_bay_value(bay)}
-  binding.pry
+  bays = get_bays_from_bay_list(bay_list)
+  bays.sort_by! {|bay| bay['value']}
+  # returns list of items and the distance between them(largest bay value - smalles bay value)
+  [get_items_from_bay_list(bay_list), bays.last['value'] - bays.first['value']]
+end
+
+def get_bays_from_item_list_ordered(item_list)
+  bays = get_bays_from_item_list(item_list)
+  bays.sort_by {|bay| bay['value']}
 end
