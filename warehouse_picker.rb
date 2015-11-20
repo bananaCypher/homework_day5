@@ -38,3 +38,9 @@ end
 def get_bay_by_item(item)
   BAYS.each {|bay, bay_item| return bay if bay_item.downcase == item.downcase}
 end
+
+def get_item_from_bay_list(bay_list)
+  item_list = []
+  bay_list.each {|bay| item_list.push(get_item_from_bay(bay))}
+  item_list
+end
