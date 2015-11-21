@@ -27,14 +27,14 @@ puts "\n"
 # Given a list of bays, list the items in those bays, and calculate the distance from the two furthest apart bays. 
 items_and_distance = get_items_from_bay_list_with_distance(['b5', 'b10', 'b6'])
 puts "The items in bays b5, b10 and b6 are:-"
-items_and_distance[0].each {|item| puts "\t#{item}"}
-puts "Should be nail filer, cookie jar and tooth paste.  And the distance between them is #{items_and_distance[1]}, should be 5"
+items_and_distance[:items].each {|item| puts "\t#{item}"}
+puts "Should be nail filer, cookie jar and tooth paste.  And the distance between them is #{items_and_distance[:distance]}, should be 5"
 puts "\n"
 
 items_and_distance = get_items_from_bay_list_with_distance(['b3', 'c7', 'c9', 'a3'])
 puts "The items in bays b3, c7, c9 and a3 are:-"
-items_and_distance[0].each {|item| puts "\t#{item}"}
-puts "Should be picture frame, paint brush, shoe lace and blouse.  And the distance between them is #{items_and_distance[1]}, should be 15"
+items_and_distance[:items].each {|item| puts "\t#{item}"}
+puts "Should be picture frame, paint brush, shoe lace and blouse.  And the distance between them is #{items_and_distance[:distance]}, should be 15"
 puts "\n"
 
 # Given a list of products, find the bays that need to be visited, and order them in the order they need to be visited from entrance to exit. For instance:

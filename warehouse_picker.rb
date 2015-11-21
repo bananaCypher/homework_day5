@@ -196,8 +196,7 @@ end
 def get_items_from_bay_list_with_distance(bay_list)
   bays = get_bays_from_bay_list(bay_list)
   bays.sort_by! {|bay| bay['value']}
-  # returns list of items and the distance between them(largest bay value - smalles bay value)
-  [get_items_from_bay_list(bay_list), bays.last['value'] - bays.first['value']]
+  {items: get_items_from_bay_list(bay_list), distance: bays.last['value'] - bays.first['value']}
 end
 
 def get_bays_from_item_list_ordered(item_list)
