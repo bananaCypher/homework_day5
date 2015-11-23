@@ -161,15 +161,11 @@ def get_bay_from_item(item)
 end
 
 def get_bays_from_bay_list(bay_list)
-  bays = []
-  bay_list.each {|bay| bays.push(get_bay_from_bay_key(bay))}
-  bays
+  bay_list.map {|bay| get_bay_from_bay_key(bay)}
 end
 
 def get_bays_from_item_list(item_list)
-  bay_list = []
-  item_list.each {|item| bay_list.push(get_bay_from_item(item))}
-  bay_list
+  item_list.map {|item| get_bay_from_item(item)}
 end
 
 # Runner functions
@@ -182,15 +178,11 @@ def get_bay_by_item(item)
 end
 
 def get_items_from_bay_list(bay_list)
-  item_list = []
-  get_bays_from_bay_list(bay_list).each {|bay| item_list.push(bay['item'])}
-  item_list
+  get_bays_from_bay_list(bay_list).map {|bay| bay['item']}
 end
 
 def get_bay_numbers_from_item_list(item_list)
-  bay_list = []
-  get_bays_from_item_list(item_list).each {|bay| bay_list.push(bay['bay'])}
-  bay_list
+  get_bays_from_item_list(item_list).map {|bay| bay['bay']}
 end
 
 def get_items_from_bay_list_with_distance(bay_list)
